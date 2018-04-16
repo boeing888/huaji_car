@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>滑机车 | 二手车交易平台</title>
+
+    <!-- FONTS ONLINE -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
+          rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <!--MAIN STYLE-->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/main.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/responsive.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/static/js/html5shiv.js"></script>
+    <script src="/static/js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+{% module xsrf_form_html() %}
+
+<div class="modal fade" id="newinfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">消息</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">您的车已售出，快去个人资料看看吧！</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> OK</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="supportus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="/static/images/ali.JPG" class="img-responsive">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="wrap">
+
+    <!--======= TOP BAR =========-->
+    <div class="top-bar">
+        <div class="container">
+            <ul class="left-bar-side">
+                <li>
+                    <p><i class="fa fa-phone"></i> 联系我们 : +86 131 2211 1111 </p>
+                    <span>|</span></li>
+                <li>
+                    <p><i class="fa fa-envelope-o"></i> info@huajicar.com </p>
+                    <span>|</span></li>
+                <li>
+                    {% if not username %}
+                    <a id="register" href="/Register"><i class="fa fa-lock"></i> 登录 / 注册 </a>
+                    {% else %}
+                    <a href="/UserInfo"><i class="fa fa-address-book"></i> {{ username }} </a>
+                    <a id="logout" href=""><i class="fa fa-lock"></i> 注销 </a>
+                    {% end %}
+                    <span>|</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--======= HEADER =========-->
+    <header class="sticky">
+        <div class="container">
+
+            <!--======= LOGO =========-->
+            <div class="logo"><a href="/"><img src="/static/images/logo.png" alt=""></a></div>
+            <!--======= NAV =========-->
+            <nav>
+
+                <!--======= MENU START =========-->
+                <ul class="ownmenu">
+                    <li><a href="/index">主页</a></li>
+                    <li><a href="/PropertyListing">车辆列表</a></li>
+                    <li class="active"><a href="/OurAgents">关于我们</a></li>
+                    <li><a href="/ContactUs">联系我们</a></li>
+                </ul>
+
+            </nav>
+        </div>
+    </header>
+
+    <!--======= BANNER =========-->
+    <div class="sub-banner">
+        <div class="overlay">
+            <div class="container">
+                <h1>关于我们</h1>
+                <ol class="breadcrumb">
+                    <li class="pull-left">关于我们</li>
+                    <li><a href="/index">主页</a></li>
+                    <li class="active">关于我们</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+
+    <!--======= WHAT WE DO =========-->
+    <section class="what-we-do">
+        <div class="container">
+
+            <!--======= TITTLE =========-->
+            <div class="tittle"><img src="/static/images/head-top.png" alt="">
+                <h3>关于我们</h3>
+                <p>滑机车是一个提供在线二手车买卖的平台，为车辆提供全方位的检测，保障每一个用户的购车售车体验。滑机车有专业的服务团队，提供咨询和商洽的服务，秉承专业耐心的公司理念，实现跨越式的突破</p>
+            </div>
+            <div role="tabpanel">
+
+                <!--======= NAV TABS =========-->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#what-we" aria-controls="home" role="tab"
+                                                              data-toggle="tab"><i class="fa fa-bullhorn"></i> <span
+                            class="font-montserrat">服务宗旨</span></a></li>
+                    <li role="presentation"><a href="#mission" aria-controls="profile" role="tab" data-toggle="tab"><i
+                            class="fa fa-rocket"></i><span class="font-montserrat">质量保障</span></a></li>
+                    <li role="presentation"><a href="#vision" aria-controls="messages" role="tab" data-toggle="tab"><i
+                            class="fa fa-lightbulb-o"></i><span class="font-montserrat">期待目标</span></a></li>
+                </ul>
+
+                <!--======= TAB CONTENT =========-->
+                <div class="tab-content">
+
+                    <!--======= WHAT WE DO =========-->
+                    <div role="tabpanel" class="tab-pane animated-6s flipInX active" id="what-we">
+                        <h4>为你找辆好车</h4>
+                        <p>一辆好车，上班通勤省油安稳，出门旅行心情愉悦，不论是一家三代想要舒适空间，还是二人世界寻找一个浪漫与刺激，不论是平价代步，还是豪华大气，滑机车都能帮您找到需要的合适的好车。最好的车配最好的您，滑机车，滑稽我们是认真的</p>
+                    </div>
+
+                    <!--======= OUR MISSION =========-->
+                    <div role="tabpanel" class="tab-pane animated-6s flipInX" id="mission">
+                        <h4>检测为你安心</h4>
+                        <p>T二百余项专业检测，由专业评估师团队进行完备检测流程，排除重大事故，火烧车，泡水车，交付您的车不存在安全问题，最专业的检测为的是给您最安心的体验</p>
+                    </div>
+
+                    <!--======= OUR VISION =========-->
+                    <div role="tabpanel" class="tab-pane animated-6s flipInX" id="vision">
+                        <h4>为你变得更好</h4>
+                        <p>更多的车源，更多的城市覆盖，更大更专业的团队，我们想要变得更好，我们想要给每一位车主最放心的交易平台</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--======= TEAM =========-->
+    <section id="team">
+        <div class="container">
+
+            <!--======= TITTLE =========-->
+            <div class="tittle"><img src="/static/images/head-top.png" alt="">
+                <h3>我们的经纪人</h3>
+                <p>专业经纪人 甜美小姐姐 贴心服务 全程跟进 保障您每一分权益 给您最温馨的购车体验</p>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!--======= TEAM ROW =========-->
+                    <ul class="row">
+
+                        <!--======= TEAM =========-->
+                        {% for agent in agent_info %}
+                        <li class="col-sm-3">
+                            <div class="team"><img class="img-responsive" src="{{ agent[4] }}" alt=""
+                                                   style="max-width: 270px">
+
+                                <!--======= TEAM DETAILS =========-->
+                                <div class="team-detail">
+                                    <h6>{{ agent[0] }}</h6>
+                                    <p>{{ agent[1] }}</p>
+                                    <p>{{ agent[2] }}</p>
+                                    <p>{{ agent[3] }}</p>
+                                </div>
+                            </div>
+                        </li>
+                        {% end %}
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!--======= PARTHNER =========-->
+    <section class="parthner">
+        <div class="container">
+            <!--======= TITTLE =========-->
+            <div class="tittle"><img src="/static/images/head-top.png" alt="">
+                <h3>战略合作伙伴</h3>
+                <p>滑机车已与多家著名二手车服务提供商签订战略合作协议</p>
+            </div>
+
+            <!--======= PARTHNERS =========-->
+            <div class="parthner-slide">
+                <div class="part"><a href="https://www.xin.com" target="_blank"> <img
+                        src="/static/images/parthner-img-1.png" alt=""> </a></div>
+
+                <!--======= PARTHNERS =========-->
+                <div class="part"><a href="https://www.che168.com" target="_blank"> <img
+                        src="/static/images/parthner-img-2.png" alt=""> </a></div>
+
+                <!--======= PARTHNERS =========-->
+                <div class="part"><a href="http://www.hx2car.com" target="_blank"> <img
+                        src="/static/images/parthner-img-3.png" alt=""> </a></div>
+
+                <!--======= PARTHNERS =========-->
+                <div class="part"><a href="http://www.ganji.com" target="_blank"> <img
+                        src="/static/images/parthner-img-4.png" alt=""> </a></div>
+
+                <!--======= PARTHNERS =========-->
+                <div class="part"><a href="http://www.maiche.com" target="_blank"> <img
+                        src="/static/images/parthner-img-5.png" alt=""> </a></div>
+
+            </div>
+        </div>
+    </section>
+
+    <!--======= CALL US =========-->
+
+    <section class="call-us">
+        <div class="overlay">
+            <div class="container">
+                <ul class="row">
+                    <li class="col-sm-6">
+                        <h4>买卖二手车？</h4>
+                        <h6>滑机车，没有中间商赚差价！</h6>
+                    </li>
+                    <li class="col-sm-4">
+                        <h1>+86 131 2211 1111</h1>
+                    </li>
+                    <li class="col-sm-2 no-padding"><a href="/ContactUs" class="btn">联系我们</a></li>
+                    <li class="col-sm-2 no-padding"><a class="btn" style="cursor: pointer" onclick="$('#supportus').modal({
+                        keyboard: true
+                    });">支持我们</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!--======= RIGHTS =========-->
+    <div class="rights">
+        <div class="container">
+            <p class="font-montserrat">© 2018 滑机车 版权所有</p>
+        </div>
+    </div>
+</div>
+<script src="/static/js/jquery-1.11.0.min.js"></script>
+<script src="/static/js/wow.min.js"></script>
+<script src="/static/js/bootstrap-select.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/jquery.stellar.js"></script>
+<script src="/static/js/jquery.flexslider-min.js"></script>
+<script src="/static/js/owl.carousel.min.js"></script>
+<script src="/static/js/jquery.sticky.js"></script>
+<script src="/static/js/own-menu.js"></script>
+<script src="/static/js/jquery.nouislider.min.js"></script>
+<script src="/static/js/bootstrap-select.js"></script>
+<script src="/static/js/main.js"></script>
+<script type="text/javascript">
+
+    $('#register').attr('href', '/Register?next=' + location.pathname + location.search);
+
+    function getCookie(name) {
+        var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
+        return r ? r[1] : undefined;
+    }
+
+    $('#logout').click(function () {
+        $.ajax(
+            {
+                url: "/Logout",
+                headers: {
+                    "X-XSRFToken": getCookie("_xsrf"),
+                },
+                data: "logout",
+                type: "post",
+                success: function (result) {
+                    if (result === "ok") {
+                        location.reload();
+                    }
+                    else {
+                        $(function () {
+                            alert(0);
+                        });
+                    }
+                }
+            }
+        );
+    });
+
+    var intervalid;
+    var getting = {
+        url: '/Polling',
+        type: 'post',
+        headers: {
+            "X-XSRFToken": getCookie("_xsrf")
+        },
+        success: function (res) {
+            if (res === 'ok' && document.visibilityState === 'visible') {
+                $(function () {
+                    $('#newinfo').modal({
+                        keyboard: true
+                    });
+                    $.ajax(
+                        {
+                            url: "/Polling",
+                            headers: {
+                                "X-XSRFToken": getCookie("_xsrf"),
+                            },
+                            type: "get",
+                            success: function (result) {
+                            }
+                        }
+                    );
+                });
+            }
+        },
+        error:function (XMLHttpRequest, textStatus, errorThrown) {
+                    if(XMLHttpRequest.status===403){
+                        window.clearInterval(intervalid);
+                    }
+                }
+    };
+
+    intervalid = window.setInterval(function () {
+        $.ajax(getting)
+    }, 5000);
+</script>
+<script src="https://qiyukf.com/script/7601158a18de09cf125cc37bbe3478cb.js"></script>
+</body>
+</html>

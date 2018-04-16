@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>滑机车 | 二手车交易平台</title>
+
+    <!-- FONTS ONLINE -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
+          rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <!--MAIN STYLE-->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/main.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/responsive.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/static/js/html5shiv.js"></script>
+    <script src="/static/js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+{% module xsrf_form_html() %}
+
+<div class="modal fade" id="newinfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">消息</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">您的车已售出，快去个人资料看看吧！</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> OK</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="notfull" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">警告</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">你必须完善用户资料后才能购买车辆！</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> OK</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="needlogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">警告</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">你必须登录后才能砍价！</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> OK</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="isempty" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">警告</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">请填写报价！</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> OK</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="success" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">成功</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">报价成功！</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> OK</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="chop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">砍价</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body text-center">
+                <form id="chop_form">
+                    <input type="text" name="formerowner" value="{{ user_info[0] }}" hidden="hidden">
+                    <input type="text" name="carid" value="{{ car_info[11] }}" hidden="hidden">
+                    输入价格：<input id="price" type="number" name="price" required>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="chop_ok" type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<!-- Page Wrap ===========================================-->
+<div id="wrap">
+
+    <!--======= TOP BAR =========-->
+    <div class="top-bar">
+        <div class="container">
+            <ul class="left-bar-side">
+                <li>
+                    <p><i class="fa fa-phone"></i> 联系我们 : +86 131 2211 1111 </p>
+                    <span>|</span></li>
+                <li>
+                    <p><i class="fa fa-envelope-o"></i> info@huajicar.com </p>
+                    <span>|</span></li>
+                <li>
+                    {% if not username %}
+                    <a id="register" href="/Register"><i class="fa fa-lock"></i> 登录 / 注册 </a>
+                    {% else %}
+                    <a href="/UserInfo"><i class="fa fa-address-book"></i> {{ username }} </a>
+                    <a id="logout" href=""><i class="fa fa-lock"></i> 注销 </a>
+                    {% end %}
+                    <span>|</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--======= HEADER =========-->
+    <header class="sticky">
+        <div class="container">
+
+            <!--======= LOGO =========-->
+            <div class="logo"><a href="/"><img src="/static/images/logo.png" alt=""></a></div>
+            <!--======= NAV =========-->
+            <nav>
+
+                <!--======= MENU START =========-->
+                <ul class="ownmenu">
+                    <li><a href="/index">主页</a></li>
+                    <li><a href="/PropertyListing">车辆列表</a></li>
+                    <li><a href="/OurAgents">关于我们</a></li>
+                    <li><a href="/ContactUs">联系我们</a></li>
+                </ul>
+
+            </nav>
+        </div>
+    </header>
+
+    <!--======= BANNER =========-->
+    <div class="sub-banner">
+        <div class="overlay">
+            <div class="container">
+                <h1>车辆细节</h1>
+                <ol class="breadcrumb">
+                    <li class="pull-left">车辆细节</li>
+                    <li><a href="/index">主页</a></li>
+                    <li class="active">车辆细节</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!--======= PROPERTIES DETAIL PAGE =========-->
+    <section class="properti-detsil">
+        <div class="container">
+            <div class="row">
+
+                <!--======= LEFT BAR =========-->
+                <div class="col-sm-12">
+
+                    <!--======= THUMB SLIDER =========-->
+
+
+                    <div id="myCarousel" class="carousel slide">
+                        <!-- 轮播（Carousel）指标 -->
+                        <ol class="carousel-indicators">
+                            {% for img in enumerate(car_info[6].split(';')) %}
+                            {% if img[0]==0 %}
+                            <li data-target="#myCarousel" data-slide-to="{{ img[0] }}" class="active"></li>
+                            {% else %}
+                            {% if img[1].strip()!='' %}
+                            <li data-target="#myCarousel" data-slide-to="{{ img[0] }}"></li>
+                            {% end %}
+                            {% end %}
+                            {% end %}
+                        </ol>
+                        <!-- 轮播（Carousel）项目 -->
+                        <div class="carousel-inner">
+                            {% for img in enumerate(car_info[6].split(';')) %}
+                            {% if img[0]==0 %}
+                            <div class="item active" style="text-align: center;">
+                                <img src="{{ img[1] }}" alt="">
+                            </div>
+                            {% else %}
+                            {% if img[1].strip()!='' %}
+                            <div class="item" style="text-align: center;">
+                                <img src="{{ img[1] }}" alt="">
+                            </div>
+                            {% end %}
+                            {% end %}
+                            {% end %}
+                        </div>
+                        <!-- 轮播（Carousel）导航 -->
+                        <a class="carousel-control left" href="#myCarousel"
+                           data-slide="prev">&lsaquo;
+                        </a>
+                        <a class="carousel-control right" href="#myCarousel"
+                           data-slide="next">&rsaquo;
+                        </a>
+                    </div>
+
+                    <!--======= HOME INNER DETAILS =========-->
+                    <ul class="home-in">
+                        <li><span><i class="fa fa-car"></i> {{ car_info[1] }} 门</span></li>
+                        <li><span><i class="fa fa-user"></i> {{ car_info[2] }} 座</span></li>
+                        <li><span><i class="fa fa-fire"></i> {{ car_info[3] }} L</span></li>
+                        <li><a onclick="window.print()" style="cursor:pointer"><i class="fa fa-print"></i> 打印此页面</a>
+                        </li>
+                    </ul>
+
+                    <!--======= TITTLE =========-->
+                    <h5>{{ car_info[0] }}</h5>
+                    <section>
+                        {% if car_info[12]==1 %}
+                        <span class="sale-tag font-montserrat"> 待售</span>
+                        {% else %}
+                        <span class="sale-tag font-montserrat"> 已售出</span>
+                        {% end %}
+                        <span class="sale-tag price font-montserrat"> ￥{{ car_info[4] }}</span>
+                        {% if username!=user_info[0].encode() and car_info[12]==1 %}
+                        {% if my_info[6]==0 %}
+                        <a
+                                class="sale-tag price font-montserrat" onclick="$('#notfull').modal({
+                        keyboard: true
+                    });" style="cursor: pointer">购买</a>
+                        <a class="sale-tag price font-montserrat" onclick="$('#notfull').modal({
+                        keyboard: true
+                    });" style="cursor: pointer">砍价</a>
+                        {% else %}
+                        <a
+                                class="sale-tag price font-montserrat"
+                                href="/Purchase?id={{ car_info[11] }}">购买</a>
+                        <a class="sale-tag price font-montserrat" onclick="$('#chop').modal({
+                        keyboard: true
+                    });" style="cursor: pointer">砍价</a>
+                        {% end %}
+                        {% end %}
+                    </section>
+                    <p>{{ car_info[7] }}</p>
+
+                    <!--======= OWNER DETSILS =========-->
+                    <section class="info-property">
+                        <h5 class="tittle-head">卖家信息</h5>
+                        <div class="inner">
+
+                            <!--======= OWNER =========-->
+                            <div class="row">
+                                <div class="col-sm-2"><img class="img-responsive" src="{{ user_info[5] }}" alt=""></div>
+                                <div class="col-sm-10">
+                                    <ul class="row">
+                                        <li class="col-sm-4">
+                                            <br><br>
+                                            <p><span class="font-montserrat">用户名 </span>: {{ user_info[0] }}</p>
+                                            <p><span class="font-montserrat">E-mail </span>: {{ user_info[1] }}</p>
+                                        </li>
+                                        <li class="col-sm-4">
+                                            <br><br>
+                                            <p><span class="font-montserrat">电话 </span>: {{ user_info[2] }}</p>
+                                            <p><span class="font-montserrat">性别 </span>: {{ user_info[3] }}</p>
+                                        </li>
+                                        <li class="col-sm-4">
+                                            <br><br>
+                                            <p><span class="font-montserrat"> 国籍 </span>: {{ user_info[4] }}</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!--======= PROPERTY FEATURES =========-->
+                    <section class="info-property more">
+                        <h5 class="tittle-head">车辆细节</h5>
+                        <div class="inner">
+
+                            <!--======= FEATURE DETAILS =========-->
+                            <ul class="row">
+                                {% for note in car_info[8].split(';') %}
+                                {% if note.strip()!='' %}
+                                <li class="col-sm-3">
+                                    <p>{{ note }}</p>
+                                </li>
+                                {% end %}
+                                {% end %}
+                            </ul>
+                        </div>
+                    </section>
+
+
+                    <!--======= AGENT DETAILS =========-->
+                    <section class="info-property agents-info">
+                        <h5 class="tittle-head">经纪人信息</h5>
+                        <div class="inner">
+                            <!--======= AGENT DETAILS =========-->
+                            <div class="row">
+                                <div class="col-sm-3"><img class="img-responsive" src="{{ agent_info[5] }}" alt=""></div>
+                                <div class="col-sm-9">
+                                    <h5>{{ agent_info[0] }}</h5>
+                                    <p>{{ agent_info[3] }}</p>
+
+                                    <!--======= AGENT INFOR =========-->
+                                    <ul class="agent-info">
+                                        <li>
+                                            <p><i class="fa fa-phone"></i> {{ agent_info[2] }} </p>
+                                        </li>
+                                        <li>
+                                            <p><i class="fa fa-envelope-o"></i> {{ agent_info[1] }} </p>
+                                        </li>
+                                        <li>
+                                            <p><i class="fa fa-home"></i> 共管理 {{ agent_info[4] }} 辆车 </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!--======= RIGHTS =========-->
+    <div class="rights">
+        <div class="container">
+            <p class="font-montserrat">© 2018 滑机车 版权所有</p>
+        </div>
+    </div>
+</div>
+<script src="/static/js/jquery-1.11.0.min.js"></script>
+<script src="/static/js/wow.min.js"></script>
+<script src="/static/js/bootstrap-select.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/jquery.stellar.js"></script>
+<script src="/static/js/jquery.flexslider-min.js"></script>
+<script src="/static/js/owl.carousel.min.js"></script>
+<script src="/static/js/jquery.sticky.js"></script>
+<script src="/static/js/own-menu.js"></script>
+<script src="/static/js/jquery.nouislider.min.js"></script>
+<script src="/static/js/bootstrap-select.js"></script>
+<script src="/static/js/main.js"></script>
+<script type="text/javascript">
+
+    $('#register').attr('href', '/Register?next=' + location.pathname + location.search);
+
+
+    function getCookie(name) {
+        var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
+        return r ? r[1] : undefined;
+    }
+
+    $('#chop_ok').click(function () {
+        if ($('#price').val() === '') {
+            $('#isempty').modal({
+                keyboard: true
+            });
+            return;
+        }
+        $.ajax(
+            {
+                url: "/GetChop",
+                headers: {
+                    "X-XSRFToken": getCookie("_xsrf"),
+                },
+                data: $('#chop_form').serialize(),
+                type: "post",
+                success: function (result) {
+                    if (result === "ok") {
+                        $('#success').modal({
+                            keyboard: true
+                        });
+                    }
+                    else {
+                        $(function () {
+                            alert(0);
+                        });
+                    }
+                },
+                error: function (result) {
+                    $('#needlogin').modal({
+                        keyboard: true
+                    });
+                }
+            }
+        );
+    });
+
+    $('#logout').click(function () {
+        $.ajax(
+            {
+                url: "/Logout",
+                headers: {
+                    "X-XSRFToken": getCookie("_xsrf"),
+                },
+                data: "logout",
+                type: "post",
+                success: function (result) {
+                    if (result === "ok") {
+                        location.reload();
+                    }
+                    else {
+                        $(function () {
+                            alert(0);
+                        });
+                    }
+                }
+            }
+        );
+    });
+
+    var intervalid;
+    var getting = {
+        url: '/Polling',
+        type: 'post',
+        headers: {
+            "X-XSRFToken": getCookie("_xsrf")
+        },
+        success: function (res) {
+            if (res === 'ok' && document.visibilityState === 'visible') {
+                $(function () {
+                    $('#newinfo').modal({
+                        keyboard: true
+                    });
+                    $.ajax(
+                        {
+                            url: "/Polling",
+                            headers: {
+                                "X-XSRFToken": getCookie("_xsrf"),
+                            },
+                            type: "get",
+                            success: function (result) {
+                            }
+                        }
+                    );
+                });
+            }
+        },
+        error:function (XMLHttpRequest, textStatus, errorThrown) {
+                    if(XMLHttpRequest.status===403){
+                        window.clearInterval(intervalid);
+                    }
+                }
+    };
+
+    intervalid = window.setInterval(function () {
+        $.ajax(getting)
+    }, 5000);
+
+</script>
+<script src="{{ agent_info[6] }}"></script>
+</body>
+</html>

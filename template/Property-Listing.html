@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>滑机车 | 二手车交易平台</title>
+
+    <!-- FONTS ONLINE -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
+          rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <!--MAIN STYLE-->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/main.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/responsive.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/static/js/html5shiv.js"></script>
+    <script src="/static/js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+
+{% module xsrf_form_html() %}
+
+<div class="modal fade" id="newinfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">消息</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">您的车已售出，快去个人资料看看吧！</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> OK</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<!-- Page Wrap ===========================================-->
+<div id="wrap">
+
+    <!--======= TOP BAR =========-->
+    <div class="top-bar">
+        <div class="container">
+            <ul class="left-bar-side">
+                <li>
+                    <p><i class="fa fa-phone"></i> 联系我们 : +86 131 2211 1111 </p>
+                    <span>|</span></li>
+                <li>
+                    <p><i class="fa fa-envelope-o"></i> info@huajicar.com </p>
+                    <span>|</span></li>
+                <li>
+                    {% if not username %}
+                    <a id="register" href="/Register"><i class="fa fa-lock"></i> 登录 / 注册 </a>
+                    {% else %}
+                    <a href="/UserInfo"><i class="fa fa-address-book"></i> {{ username }} </a>
+                    <a id="logout" href=""><i class="fa fa-lock"></i> 注销 </a>
+                    {% end %}
+                    <span>|</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--======= HEADER =========-->
+    <header class="sticky">
+        <div class="container">
+
+            <!--======= LOGO =========-->
+            <div class="logo"><a href="/"><img src="/static/images/logo.png" alt=""></a></div>
+            <!--======= NAV =========-->
+            <nav>
+
+                <!--======= MENU START =========-->
+                <ul class="ownmenu">
+                    <li><a href="/index">主页</a></li>
+                    <li class="active"><a href="/PropertyListing">车辆列表</a></li>
+                    <li><a href="/OurAgents">关于我们</a></li>
+                    <li><a href="/ContactUs">联系我们</a></li>
+                </ul>
+
+            </nav>
+        </div>
+    </header>
+
+    <!--======= BANNER =========-->
+    <div class="sub-banner">
+        <div class="overlay">
+            <div class="container">
+                <h1>车辆列表</h1>
+                <ol class="breadcrumb">
+                    <li class="pull-left">车辆列表</li>
+                    <li><a href="/">主页</a></li>
+                    <li class="active">车辆列表</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!--======= PROPERTY =========-->
+    <section class="properties white-bg">
+        <div class="container">
+
+            <!--======= TITTLE =========-->
+            <div class="tittle"><img src="/static/images/head-top.png" alt="">
+                <h3>全部在售车辆</h3>
+                <p>车就是要开的舒心 看好就买 开够就卖 买卖一平台 省心省力没有坑
+                    [品质好车 了解一下] [真心诚意 用爱选车] [五十包邮 手动滑稽]</p>
+            </div>
+
+            <!--======= PROPERTIES ROW =========-->
+            <ul class="row">
+
+                {% for car in car_info %}
+                <!--======= PROPERTY =========-->
+                <li class="col-sm-4" style="height: 444.75px;">
+                    <!--======= TAGS =========-->
+                    <span class="tag font-montserrat sale">待售</span>
+                    <section>
+                        <!--======= IMAGE =========-->
+                        <div class="img"><img class="img-responsive" src="{{ car[6].split(';')[0] }}" alt="">
+                            <!--======= IMAGE HOVER =========-->
+
+                            <div class="over-proper"><a href="/PropertyDetail?id={{ car[8] }}"
+                                                        class="btn font-montserrat">详细信息</a></div>
+                        </div>
+                        <!--======= HOME INNER DETAILS =========-->
+                        <ul class="home-in">
+                            <li><span><i class="fa fa-car"></i> {{ car[1] }} 门</span></li>
+                            <li><span><i class="fa fa-user"></i> {{ car[2] }} 座</span></li>
+                            <li><span><i class="fa fa-fire"></i> {{ car[3] }} L</span></li>
+                        </ul>
+                        <!--======= HOME DETAILS =========-->
+                        <div class="detail-sec"><a href="/PropertyDetail?id={{ car[8] }}" class="font-montserrat">{{
+                            car[0][:24]+'...' }}</a> <span class="locate"><i class="fa fa-tachometer"></i> {{ car[5] }} 公里</span>
+                            <p>{{ car[7][:19]+'...' }}</p>
+                            <div class="share-p"><span class="price font-montserrat">￥ {{ car[4] }}</span> <i
+                                    class="fa fa-star-o"></i> <i class="fa fa-share-alt"></i></div>
+                        </div>
+                    </section>
+                </li>
+                {% end %}
+
+            </ul>
+        </div>
+    </section>
+
+
+    <!--======= RIGHTS =========-->
+    <div class="rights">
+        <div class="container">
+            <p class="font-montserrat">© 2018 滑机车 版权所有</p>
+        </div>
+    </div>
+</div>
+<script src="/static/js/jquery-1.11.0.min.js"></script>
+<script src="/static/js/wow.min.js"></script>
+<script src="/static/js/bootstrap-select.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/jquery.stellar.js"></script>
+<script src="/static/js/jquery.flexslider-min.js"></script>
+<script src="/static/js/owl.carousel.min.js"></script>
+<script src="/static/js/jquery.sticky.js"></script>
+<script src="/static/js/own-menu.js"></script>
+<script src="/static/js/jquery.nouislider.min.js"></script>
+<script src="/static/js/bootstrap-select.js"></script>
+<script src="/static/js/main.js"></script>
+<script type="text/javascript">
+
+    $('#register').attr('href', '/Register?next=' + location.pathname + location.search);
+
+    function getCookie(name) {
+        var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
+        return r ? r[1] : undefined;
+    }
+
+    $('#logout').click(function () {
+        $.ajax(
+            {
+                url: "/Logout",
+                headers: {
+                    "X-XSRFToken": getCookie("_xsrf"),
+                },
+                data: "logout",
+                type: "post",
+                success: function (result) {
+                    if (result === "ok") {
+                        location.reload();
+                    }
+                    else {
+                        $(function () {
+                            alert(0);
+                        });
+                    }
+                }
+            }
+        );
+    });
+
+    var intervalid;
+    var getting = {
+        url: '/Polling',
+        type: 'post',
+        headers: {
+            "X-XSRFToken": getCookie("_xsrf")
+        },
+        success: function (res) {
+            if (res === 'ok' && document.visibilityState === 'visible') {
+                $(function () {
+                    $('#newinfo').modal({
+                        keyboard: true
+                    });
+                    $.ajax(
+                        {
+                            url: "/Polling",
+                            headers: {
+                                "X-XSRFToken": getCookie("_xsrf"),
+                            },
+                            type: "get",
+                            success: function (result) {
+                            }
+                        }
+                    );
+                });
+            }
+        },
+        error:function (XMLHttpRequest, textStatus, errorThrown) {
+                    if(XMLHttpRequest.status===403){
+                        window.clearInterval(intervalid);
+                    }
+                }
+    };
+
+    intervalid = window.setInterval(function () {
+        $.ajax(getting)
+    }, 5000);
+</script>
+<script src="https://qiyukf.com/script/7601158a18de09cf125cc37bbe3478cb.js"></script>
+</body>
+</html>

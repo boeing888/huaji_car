@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>滑机车 | 二手车交易平台</title>
+
+    <!-- FONTS ONLINE -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
+          rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <!--MAIN STYLE-->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/main.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/responsive.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/static/js/html5shiv.js"></script>
+    <script src="/static/js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+<div class="modal fade" id="supportus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                  <img src="/static/images/ali.JPG" class="img-responsive">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">失败</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">登录失败，请核对账户名和密码！</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> OK</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="register_ok" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">成功</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">注册成功，请登录！</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> OK</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="register_failed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">失败</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">用户名已存在！</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> OK</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<!-- Page Wrap ===========================================-->
+<div id="wrap">
+
+    <!--======= TOP BAR =========-->
+    <div class="top-bar">
+        <div class="container">
+            <ul class="left-bar-side">
+                <li>
+                    <p><i class="fa fa-phone"></i> 联系我们 : +86 131 2211 1111 </p>
+                    <span>|</span></li>
+                <li>
+                    <p><i class="fa fa-envelope-o"></i> info@huajicar.com </p>
+                    <span>|</span></li>
+                <li>
+                    {% if not username %}
+                    <a href="/Register"><i class="fa fa-lock"></i> 登录 / 注册 </a>
+                    {% else %}
+                    <a href="/UserInfo"><i class="fa fa-address-book"></i> {{ username }} </a>
+                    <a id="logout" href=""><i class="fa fa-lock"></i> 注销 </a>
+                    {% end %}
+                    <span>|</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--======= HEADER =========-->
+    <header class="sticky">
+        <div class="container">
+
+            <!--======= LOGO =========-->
+            <div class="logo"><a href="/"><img src="/static/images/logo.png" alt=""></a></div>
+            <!--======= NAV =========-->
+            <nav>
+
+                <!--======= MENU START =========-->
+                <ul class="ownmenu">
+                    <li><a href="/index">主页</a></li>
+                    <li><a href="/PropertyListing">车辆列表</a></li>
+                    <li><a href="/OurAgents">关于我们</a></li>
+                    <li><a href="/ContactUs">联系我们</a></li>
+                </ul>
+
+            </nav>
+        </div>
+    </header>
+
+    <!--======= BANNER =========-->
+    <div class="sub-banner">
+        <div class="overlay">
+            <div class="container">
+                <h1>登录/注册</h1>
+                <ol class="breadcrumb">
+                    <li class="pull-left">登录/注册</li>
+                    <li><a href="/index">主页</a></li>
+                    <li class="active">登录/注册</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!--======= PROPERTIES DETAIL PAGE =========-->
+    <section class="properti-detsil register">
+        <div class="container">
+            <div class="row">
+
+                <!--======= LEFT BAR =========-->
+                <div class="col-sm-12">
+                    <div class="row">
+
+                        <!--======= LOGIN SECTION =========-->
+                        <div class="col-sm-6">
+                            <div class="regi-sec">
+                                <span class="regi-tag">登录</span>
+                                <form id="login_form">
+                                    <ul>
+                                        <li>
+                                            <label>用户名
+                                                <input type="text" name="username" required>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>密码
+                                                <input type="password" name="password" required>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            {% module xsrf_form_html() %}
+                                            <input type="submit" class="btn" value="登录"></input>
+                                            <!--<a href="#." class="forget">Forgot Password?</a> </li>-->
+                                        </li>
+                                    </ul>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!--======= SIGN UP =========-->
+                        <div class="col-sm-6">
+                            <div class="regi-sec">
+
+
+                                <span class="regi-tag">注册</span>
+                                <form id="register_form">
+                                    <ul>
+                                        <li>
+                                            <label>用户名
+                                                <input type="text" name="username" required>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>邮箱
+                                                <input type="email" name="email" required>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>密码
+                                                <input type="password" name="password" required>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            {% module xsrf_form_html() %}
+                                            <input type="submit" class="btn" value="注册">
+                                            <div class="forget checkbox">
+                                                <label>
+                                                    <input type="checkbox">
+                                                    <a href="#.">I Agree with terms & Conditions</a> </label>
+                                            </div>
+                                    </ul>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--======= CALL US =========-->
+                    <!-- <div class="call-us">
+                        <div class="overlay">
+                            <ul>
+                                <li class="col-sm-8">
+                                    <h4>Still do you have any confusion ?</h4>
+                                    <h6>Call us and list your property here</h6>
+                                </li>
+                                <li class="col-sm-4"><a href="#." class="btn">just contact us</a></li>
+                            </ul>
+                        </div>
+                    </div> -->
+
+                    <!--======= TEAM =========-->
+                    <!-- <section id="team">
+
+                        <!--======= TITTLE =========-->
+                    <!--<div class="tittle"><img src="/static/images/head-top.png" alt="">-->
+                    <!--<h3>our great agents</h3>-->
+                    <!--<p>This time there's no stopping us. Straightnin' the curves. Flatnin' the hills Someday the-->
+                    <!--mountain might get ‘em but the law never will. The weather started getting rough - the-->
+                    <!--tiny ship was tossed.</p>-->
+                    <!--</div>-->
+
+                    <!--&lt;!&ndash;======= TEAM ROW =========&ndash;&gt;-->
+
+                    <!--<ul class="row">-->
+
+                    <!--&lt;!&ndash;======= TEAM =========&ndash;&gt;-->
+                    <!--<li class="col-sm-4">-->
+                    <!--<div class="team"><img class="img-responsive" src="/static/image/agent-9001.jpg" alt="">-->
+                    <!--<div class="team-over">-->
+                    <!--&lt;!&ndash;======= SOCIAL ICON =========&ndash;&gt;-->
+                    <!--<ul class="social_icons animated-6s fadeInUp">-->
+                    <!--<li class="facebook"><a href="#."><i class="fa fa-facebook"></i></a></li>-->
+                    <!--<li class="twitter"><a href="#."><i class="fa fa-twitter"></i></a></li>-->
+                    <!--<li class="googleplus"><a href="#."><i class="fa fa-google-plus"></i></a>-->
+                    <!--</li>-->
+                    <!--<li class="linkedin"><a href="#."><i class="fa fa-linkedin"></i></a></li>-->
+                    <!--</ul>-->
+                    <!--</div>-->
+
+                    <!--&lt;!&ndash;======= TEAM DETAILS =========&ndash;&gt;-->
+                    <!--<div class="team-detail">-->
+                    <!--<h6>David Martin</h6>-->
+                    <!--<p>Founder</p>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</li>-->
+
+                    <!--&lt;!&ndash;======= TEAM =========&ndash;&gt;-->
+                    <!--<li class="col-sm-4">-->
+                    <!--<div class="team"><img class="img-responsive" src="/static/image/agent-9002.jpg" alt="">-->
+                    <!--<div class="team-over">-->
+                    <!--&lt;!&ndash;======= SOCIAL ICON =========&ndash;&gt;-->
+                    <!--<ul class="social_icons animated-6s fadeInUp">-->
+                    <!--<li class="facebook"><a href="#."><i class="fa fa-facebook"></i></a></li>-->
+                    <!--<li class="twitter"><a href="#."><i class="fa fa-twitter"></i></a></li>-->
+                    <!--<li class="googleplus"><a href="#."><i class="fa fa-google-plus"></i></a>-->
+                    <!--</li>-->
+                    <!--<li class="linkedin"><a href="#."><i class="fa fa-linkedin"></i></a></li>-->
+                    <!--</ul>-->
+                    <!--</div>-->
+
+                    <!--&lt;!&ndash;======= TEAM DETAILS =========&ndash;&gt;-->
+                    <!--<div class="team-detail">-->
+                    <!--<h6>Hendrick jack </h6>-->
+                    <!--<p>co-Founder</p>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</li>-->
+
+                    <!--&lt;!&ndash;======= TEAM =========&ndash;&gt;-->
+                    <!--<li class="col-sm-4">-->
+                    <!--<div class="team"><img class="img-responsive" src="/static/image/agent-9003.jpg" alt="">-->
+                    <!--<div class="team-over">-->
+                    <!--&lt;!&ndash;======= SOCIAL ICON =========&ndash;&gt;-->
+                    <!--<ul class="social_icons animated-6s fadeInUp">-->
+                    <!--<li class="facebook"><a href="#."><i class="fa fa-facebook"></i></a></li>-->
+                    <!--<li class="twitter"><a href="#."><i class="fa fa-twitter"></i></a></li>-->
+                    <!--<li class="googleplus"><a href="#."><i class="fa fa-google-plus"></i></a>-->
+                    <!--</li>-->
+                    <!--<li class="linkedin"><a href="#."><i class="fa fa-linkedin"></i></a></li>-->
+                    <!--</ul>-->
+                    <!--</div>-->
+
+                    <!--&lt;!&ndash;======= TEAM DETAILS =========&ndash;&gt;-->
+                    <!--<div class="team-detail">-->
+                    <!--<h6>Hendrick jack </h6>-->
+                    <!--<p>co-Founder</p>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</li>-->
+                    <!--</ul>-->
+                    <!--</section> &ndash;&gt;-->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="call-us">
+        <div class="overlay">
+            <div class="container">
+                <ul class="row">
+                    <li class="col-sm-6">
+                        <h4>买卖二手车？</h4>
+                        <h6>滑机车，没有中间商赚差价！</h6>
+                    </li>
+                    <li class="col-sm-4">
+                        <h1>+86 131 2211 1111</h1>
+                    </li>
+                    <li class="col-sm-2 no-padding"><a href="/ContactUs" class="btn">联系我们</a></li>
+                                        <li class="col-sm-2 no-padding"><a class="btn" style="cursor: pointer" onclick="$('#supportus').modal({
+                        keyboard: true
+                    });">支持我们</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--======= RIGHTS =========-->
+    <div class="rights">
+        <div class="container">
+            <p class="font-montserrat">© 2018 滑机车 版权所有</p>
+        </div>
+    </div>
+</div>
+<script src="/static/js/jquery-1.11.0.min.js"></script>
+<script src="/static/js/wow.min.js"></script>
+<script src="/static/js/bootstrap-select.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/jquery.stellar.js"></script>
+<script src="/static/js/jquery.flexslider-min.js"></script>
+<script src="/static/js/owl.carousel.min.js"></script>
+<script src="/static/js/jquery.sticky.js"></script>
+<script src="/static/js/own-menu.js"></script>
+<script src="/static/js/jquery.nouislider.min.js"></script>
+<script src="/static/js/bootstrap-select.js"></script>
+<script src="/static/js/main.js"></script>
+<script type="text/javascript">
+
+    function getCookie(name) {
+        var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
+        return r ? r[1] : undefined;
+    }
+
+
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return '';
+    }
+
+    $(function () {
+        $("#login_form").submit(function () {
+                $.ajax(
+                    {
+                        url: "/Login",
+                        headers: {
+                            "X-XSRFToken": getCookie("_xsrf"),
+                        },
+                        data: $('#login_form').serialize(),
+                        type: "post",
+                        success: function (result) {
+                            if (result.split(' ')[0] === 'ok') {
+                                if (GetQueryString('next') != '') {
+                                    if (decodeURIComponent(GetQueryString('next')) === '/NewCar') {
+                                        window.location.href = location.protocol + "//" + location.host + decodeURIComponent(GetQueryString('next')) + '?username=' + result.split(' ')[1];
+                                    }
+                                    else if (decodeURIComponent(GetQueryString('next')) === '/UserInfo') {
+                                        window.location.href = location.protocol + "//" + location.host + decodeURIComponent(GetQueryString('next')) + '?username=' + result.split(' ')[1];
+                                    }
+                                    else {
+                                        window.location.href = location.protocol + "//" + location.host + decodeURIComponent(GetQueryString('next'));
+                                    }
+                                }
+                                else {
+                                    window.location.href = location.protocol + "//" + location.host;
+                                }
+                            }
+                            else {
+                                $(function () {
+                                    $('#myModal').modal({
+                                        keyboard: true
+                                    })
+                                });
+                            }
+                        }
+                    }
+                );
+                return false;
+            }
+        );
+        $("#register_form").submit(function () {
+                $.ajax(
+                    {
+                        url: "/Register",
+                        headers: {
+                            "X-XSRFToken": getCookie("_xsrf"),
+                        },
+                        data: $('#register_form').serialize(),
+                        type: "post",
+                        success: function (result) {
+                            if (result === "ok") {
+                                $(function () {
+                                    $('#register_ok').modal({
+                                        keyboard: true
+                                    })
+                                });
+                            }
+                            else {
+                                $(function () {
+                                    $('#register_failed').modal({
+                                        keyboard: true
+                                    })
+                                });
+                            }
+                        }
+                    }
+                );
+                return false;
+            }
+        );
+
+
+    });
+
+    $('#logout').click(function () {
+        $.ajax(
+            {
+                url: "/Logout",
+                headers: {
+                    "X-XSRFToken": getCookie("_xsrf"),
+                },
+                data: "logout",
+                type: "post",
+                success: function (result) {
+                    if (result === "ok") {
+                        location.reload();
+                    }
+                    else {
+                        $(function () {
+                            alert(0);
+                        });
+                    }
+                }
+            }
+        );
+    });
+
+</script>
+</body>
+</html>
