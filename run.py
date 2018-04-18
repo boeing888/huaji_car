@@ -418,6 +418,8 @@ class RemoveCar(tornado.web.RequestHandler):
                     cur.callproc('delete_car_info', (self.get_argument('id'),))
                     for image in images.split(';'):
                         if image:
+                            if image.startswith('/'):
+                                image = image[1:]
                             os.remove(os.path.dirname(__file__) + image)
                     cur.callproc('update_count_agent')
                     self.application.conn.commit()
@@ -449,6 +451,8 @@ class RemoveAgent(tornado.web.RequestHandler):
             try:
                 cur.callproc('delete_agent', (self.get_argument('id'),))
                 if image:
+                    if image.startswith('/'):
+                        image = image[1:]
                     os.remove(os.path.dirname(__file__) + image)
                 cur.callproc('update_count_agent')
                 self.application.conn.commit()
@@ -480,6 +484,8 @@ class RemoveUser(tornado.web.RequestHandler):
             try:
                 cur.callproc('delete_user', (self.get_argument('id'),))
                 if image and image!='/static/image/user-default.jpg':
+                    if image.startswith('/'):
+                        image = image[1:]
                     os.remove(os.path.dirname(__file__) + image)
                 cur.callproc('update_count_agent')
                 self.application.conn.commit()
@@ -512,6 +518,8 @@ class RemoveCarAdmin(tornado.web.RequestHandler):
                 cur.callproc('delete_car_info', (self.get_argument('id'),))
                 for image in images.split(';'):
                     if image:
+                        if image.startswith('/'):
+                            image=image[1:]
                         os.remove(os.path.dirname(__file__) + image)
                 cur.callproc('update_count_agent')
                 self.application.conn.commit()

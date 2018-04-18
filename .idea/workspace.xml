@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5333035d-d524-4b82-94a6-b052b93820a6" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/Property-Listing.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/Property-Listing.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/Register.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/Register.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -12,7 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/estate$run.coverage" NAME="run Coverage Results" MODIFIED="1523790821818" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/estate$run.coverage" NAME="run Coverage Results" MODIFIED="1524011928050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -65,8 +69,32 @@
       <file leaf-file-name="run.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="559" column="53" lean-forward="true" selection-start-line="559" selection-start-column="53" selection-end-line="559" selection-end-column="53" />
+            <state relative-caret-position="374">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+              <folding>
+                <element signature="e#48#61#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Register.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/template/Register.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="409">
+              <caret line="220" column="52" lean-forward="true" selection-start-line="220" selection-start-column="52" selection-end-line="220" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Property-Listing.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/template/Property-Listing.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="437">
+              <caret line="123" column="43" selection-start-line="123" selection-start-column="43" selection-end-line="123" selection-end-column="43" />
+              <folding>
+                <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -76,18 +104,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="7546">
               <caret line="343" column="104" selection-start-line="343" selection-start-column="104" selection-end-line="343" selection-end-column="104" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="run.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/guazi/run.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
-              <folding>
-                <element signature="e#48#78#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -104,8 +120,8 @@
       <file leaf-file-name="run.sh" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="132">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -196,20 +212,20 @@
         <option value="$PROJECT_DIR$/template/Car-Info.html" />
         <option value="$PROJECT_DIR$/template/Not-Found.html" />
         <option value="$PROJECT_DIR$/template/Our-Agents.html" />
-        <option value="$PROJECT_DIR$/template/Property-Listing.html" />
-        <option value="$PROJECT_DIR$/template/Register.html" />
         <option value="$PROJECT_DIR$/template/Server-Error.html" />
         <option value="$PROJECT_DIR$/template/Trade-Info.html" />
         <option value="$PROJECT_DIR$/template/User-Info.html" />
         <option value="$PROJECT_DIR$/template/map.html" />
         <option value="$PROJECT_DIR$/deadwork.sh" />
-        <option value="$PROJECT_DIR$/run.sh" />
         <option value="$PROJECT_DIR$/template/Purchased.html" />
         <option value="$PROJECT_DIR$/template/Property-Details.html" />
         <option value="$PROJECT_DIR$/template/Contact-Us.html" />
         <option value="$PROJECT_DIR$/static/js/main.js" />
-        <option value="$PROJECT_DIR$/run.py" />
         <option value="$PROJECT_DIR$/template/Manage.html" />
+        <option value="$PROJECT_DIR$/template/Register.html" />
+        <option value="$PROJECT_DIR$/template/Property-Listing.html" />
+        <option value="$PROJECT_DIR$/run.sh" />
+        <option value="$PROJECT_DIR$/run.py" />
       </list>
     </option>
   </component>
@@ -238,6 +254,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -248,13 +265,17 @@
             <path>
               <item name="estate" type="b2602c69:ProjectViewProjectNode" />
               <item name="estate" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="estate" type="b2602c69:ProjectViewProjectNode" />
+              <item name="estate" type="462c0819:PsiDirectoryNode" />
               <item name="template" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
@@ -373,7 +394,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="Python Console" order="8" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7973958" weight="0.24332978" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7973958" visible="true" weight="0.24278075" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15729167" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
@@ -405,8 +426,9 @@
       <window_info id="Designer" order="3" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Python Console" order="8" />
-      <window_info anchor="bottom" id="Database Console" order="12" sideWeight="0.49583334" weight="0.3290735" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8" visible="true" weight="0.24387646" />
+      <window_info anchor="bottom" id="Database Console" order="12" sideWeight="0.49583334" weight="0.3290735" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3290735" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
@@ -430,9 +452,8 @@
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3290735" />
-      <window_info anchor="bottom" id="SQL Generator" order="13" weight="0.3290735" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="SQL Generator" order="13" weight="0.3290735" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -645,20 +666,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template/Property-Listing.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template/Register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/template/Server-Error.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
@@ -704,11 +711,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/guazi/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
+        <state relative-caret-position="176">
           <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
-          <folding>
-            <element signature="e#48#78#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -716,13 +720,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
           <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
@@ -775,10 +772,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/template/Register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="220" column="52" lean-forward="true" selection-start-line="220" selection-start-column="52" selection-end-line="220" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/Property-Listing.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="123" column="43" selection-start-line="123" selection-start-column="43" selection-end-line="123" selection-end-column="43" />
+          <folding>
+            <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#section#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="559" column="53" lean-forward="true" selection-start-line="559" selection-start-column="53" selection-end-line="559" selection-end-column="53" />
+        <state relative-caret-position="374">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#48#61#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
